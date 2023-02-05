@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from "react"
-import { Outlet, Link, generatePath, matchPath } from "react-router-dom"
+import { Outlet, Link, matchPath } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faInstagram, faBehance, faDribbble } from '@fortawesome/free-brands-svg-icons'
 
@@ -68,7 +68,7 @@ function Layout() {
                 </div>
             }
             <Outlet />
-            <footer className=" flex flex-col items-center pt-12 gap-14 bg-white w-full h-full">
+            <footer className=" flex flex-col items-center justify-end pt-12 gap-14 bg-white w-full h-full">
                 <div>
                     <ol className="gap-10 items-center hidden sm:flex">
                         <li><Link to='/' className="h-full" >Home</Link></li>

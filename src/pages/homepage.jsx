@@ -1,14 +1,78 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import { Link } from "react-router-dom";
 import Contact from "./Contact";
 
+// component that display project for the portfolio
+export function Project({ name, image, technologies }) {
+  const tech = [...technologies];
+  return (
+    <div className='relative h-full'>
+      <div className='group group absolute h-full w-full overflow-hidden from-slate-800 to-transparent after:absolute after:top-full after:left-0 after:h-full after:w-full after:-translate-y-0 after:bg-gradient-to-t after:transition-all after:duration-500 after:ease-out after:hover:-translate-y-full'>
+        <div className='absolute top-full z-10 translate-y-0 space-y-3 p-5 transition-all delay-100 duration-500 ease-out group-hover:-translate-y-full'>
+          <h1 className='text-3xl text-white'>{name}</h1>
+          <div className='space-x-2'>
+            {tech.map((technology) => (
+              <span className='rounded-xl bg-sky-500 px-3 py-1 text-[12px] text-white'>
+                {technology}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+      <img className=' h-full w-full object-cover' src={image} alt={name} />
+    </div>
+  );
+}
+
+function Skill({ techImage, techName, expPoint, showUpDelay }) {
+  const [exp, setExp] = useState([]);
+
+  // Definr experiense level
+  useEffect(() => {
+    for (let i = 0; i < 5; i++) {
+      if (i < expPoint) {
+        setExp((exp) => [...exp, "bg-blue-500"]);
+      } else {
+        setExp((exp) => [...exp, "bg-slate-300"]);
+      }
+    }
+  }, [expPoint]);
+
+  return (
+    <AnimationOnScroll
+      animateIn='animate__fadeInLeft'
+      animateOnce={true}
+      delay={showUpDelay}
+    >
+      <div className='flex h-52 w-full flex-row items-center justify-center gap-7 rounded-md bg-white p-10 px-14 shadow-lg shadow-blue-300'>
+        {/* <div style={{ background: "conic-gradient(#2563EB 270deg, #ffffff 0deg)" }} className="  rounded-full relative flex items-center justify-center before:absolute before:bg-white before:w-4/5 before:h-4/5 before:rounded-full"></div> */}
+        <img className='w-24' src={techImage} alt={techName} />
+        <div className='space-y-1'>
+          <h1 className=' text-2xl font-medium leading-none sm:text-3xl'>
+            {techName}
+          </h1>
+          <h1 className='space-y-1.5 text-sm font-medium text-slate-400'>
+            <p>Experience</p>
+            <div id='experience' className='flex gap-1.5'>
+              {exp.length &&
+                exp.map((exp) => (
+                  <div className={`h-2.5 w-2.5 rounded-full ${exp}`}></div>
+                ))}
+            </div>
+          </h1>
+        </div>
+      </div>
+    </AnimationOnScroll>
+  );
+}
+
 function Homepage() {
   return (
     <>
-      <div className='-mt-12 flex flex-col items-center justify-around gap-y-12 gap-x-16 px-8 md:mt-0 md:flex-row lg:px-28'>
+      <div className='-mt-12 flex flex-col items-center justify-around gap-y-12 gap-x-16 px-16 md:mt-0 md:flex-row lg:px-36'>
         <div className='flex-1 space-y-8'>
           <h1 className='text-5xl font-medium lg:text-6xl'>
             Hi, I'm Oussama A{" "}
@@ -16,7 +80,7 @@ function Homepage() {
             developer
           </h1>
           <div className='flex flex-col gap-5 xl:flex-row'>
-            <Link to="/Contact">
+            <Link to='/Contact'>
               <button className='group w-full rounded-md bg-blue-600 px-10 py-4 text-white shadow-blue-900 drop-shadow-2xl xl:w-fit '>
                 let's work together{" "}
                 <FontAwesomeIcon
@@ -25,7 +89,7 @@ function Homepage() {
                 />
               </button>
             </Link>
-            <Link to="/AboutMe">
+            <Link to='/AboutMe'>
               <button className='group w-full rounded-md border-2 border-blue-600 px-10 py-4 text-blue-600 xl:w-fit  '>
                 Know more about me{" "}
                 <FontAwesomeIcon
@@ -36,9 +100,7 @@ function Homepage() {
             </Link>
           </div>
         </div>
-        <div className='flex h-96 w-full flex-1 items-center justify-center bg-slate-200'>
-          image
-        </div>
+          <div className="w-96"><img className="bg-slate-200 object-cover rounded-full bg-top" src="/profile.png" alt="profile" /></div>
         {/* <div className="flex items-center">
                     <div className="inline-block border-blue-600 border-b-[1.2em] border-l-[1.2em]  w-20 h-20 rotate-45"></div>
                     <div className="inline-block bg-blue-600 w-6 h-36 -skew-x-12"></div>
@@ -90,159 +152,49 @@ function Homepage() {
 
       <div className='h-auto py-9 px-8 lg:px-40'>
         <h1 className='mb-12 text-4xl font-bold text-blue-600'>My skills</h1>
-        <div className='grid grid-flow-row grid-cols-1 gap-6 sm:grid-cols-2 sm:grid-rows-2 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-3 lg:grid-rows-2'>
-          <AnimationOnScroll
-            animateIn='animate__fadeInLeft'
-            animateOnce={true}
-            delay={200}
-          >
-            <div className='flex h-full w-full flex-row items-center justify-center gap-7 rounded-md bg-white p-10 px-14 shadow-lg shadow-blue-300'>
-              {/* <div style={{ background: "conic-gradient(#2563EB 270deg, #ffffff 0deg)" }} className="  rounded-full relative flex items-center justify-center before:absolute before:bg-white before:w-4/5 before:h-4/5 before:rounded-full"></div> */}
-              <img className='w-24' src='../src/assets/html.svg' alt='' />
-              <div className='flex-1 space-y-1'>
-                <h1 className=' text-2xl font-medium leading-none sm:text-3xl'>
-                  Html 5
-                </h1>
-                <h1 className='space-y-1.5 text-sm font-medium text-slate-400'>
-                  <p>Experience</p>
-                  <div className='flex gap-1.5'>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                  </div>
-                </h1>
-              </div>
-            </div>
-          </AnimationOnScroll>
-          <AnimationOnScroll
-            animateIn='animate__fadeInLeft'
-            animateOnce={true}
-            delay={100}
-          >
-            <div className='flex h-full w-full flex-row items-center justify-center gap-7 rounded-md bg-white p-10 px-14 shadow-lg shadow-blue-300'>
-              {/* <div style={{ background: "conic-gradient(#2563EB 270deg, #ffffff 0deg)" }} className="  rounded-full relative flex items-center justify-center before:absolute before:bg-white before:w-4/5 before:h-4/5 before:rounded-full"></div> */}
-              <img className='w-24' src='../src/assets/Css.svg' alt='' />
-              <div className='space-y-1'>
-                <h1 className='text-2xl font-medium leading-none sm:text-3xl'>
-                  Css 3
-                </h1>
-                <h1 className='space-y-1.5 text-sm font-medium text-slate-400'>
-                  <p>Experience</p>
-                  <div className='flex gap-1.5'>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                  </div>
-                </h1>
-              </div>
-            </div>
-          </AnimationOnScroll>
-          <AnimationOnScroll animateIn='animate__fadeInLeft' animateOnce={true}>
-            <div className='flex h-full w-full flex-row items-center justify-center gap-7 rounded-md bg-white p-10 px-14 shadow-lg shadow-blue-300'>
-              {/* <div style={{ background: "conic-gradient(#2563EB 270deg, #ffffff 0deg)" }} className="  rounded-full relative flex items-center justify-center before:absolute before:bg-white before:w-4/5 before:h-4/5 before:rounded-full"></div> */}
-              <img className='w-24' src='../src/assets/JavaScript.svg' alt='' />
-              <div className='space-y-1'>
-                <h1 className='text-2xl font-medium leading-none sm:text-3xl'>
-                  JavaScript
-                </h1>
-                <h1 className='space-y-1.5 text-sm font-medium text-slate-400'>
-                  <p>Experience</p>
-                  <div className='flex gap-1.5'>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-slate-300'></div>
-                  </div>
-                </h1>
-              </div>
-            </div>
-          </AnimationOnScroll>
-          <AnimationOnScroll
-            animateIn='animate__fadeInLeft'
-            animateOnce={true}
-            delay={500}
-          >
-            <div className='flex h-full w-full flex-row items-center justify-center gap-7 rounded-md bg-white p-10 px-14 shadow-lg shadow-blue-300'>
-              {/* <div style={{ background: "conic-gradient(#2563EB 270deg, #ffffff 0deg)" }} className="  rounded-full relative flex items-center justify-center before:absolute before:bg-white before:w-4/5 before:h-4/5 before:rounded-full"></div> */}
-              <img
-                className='w-24'
-                src='../src/assets/tailwindCss.svg'
-                alt=''
-              />
-              <div className='space-y-1'>
-                <h1 className='text-2xl font-medium leading-none sm:text-3xl'>
-                  Tailwind Css
-                </h1>
-                <h1 className='space-y-1.5 text-sm font-medium text-slate-400'>
-                  <p>Experience</p>
-                  <div className='flex gap-1.5'>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                  </div>
-                </h1>
-              </div>
-            </div>
-          </AnimationOnScroll>
-
-          <AnimationOnScroll
-            animateIn='animate__fadeInLeft'
-            animateOnce={true}
-            delay={400}
-          >
-            <div className='flex h-full w-full flex-row items-center justify-center gap-7 rounded-md bg-white p-10 px-14 shadow-lg shadow-blue-300'>
-              {/* <div style={{ background: "conic-gradient(#2563EB 270deg, #ffffff 0deg)" }} className="  rounded-full relative flex items-center justify-center before:absolute before:bg-white before:w-4/5 before:h-4/5 before:rounded-full"></div> */}
-              <img className='w-24' src='../src/assets/react.svg' alt='' />
-              <div className='space-y-1'>
-                <h1 className='text-2xl font-medium leading-none sm:text-3xl'>
-                  React JS
-                </h1>
-                <h1 className='space-y-1.5 text-sm font-medium text-slate-400'>
-                  <p>Experience</p>
-                  <div className='flex gap-1.5'>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-slate-300'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-slate-300'></div>
-                  </div>
-                </h1>
-              </div>
-            </div>
-          </AnimationOnScroll>
-
-          <AnimationOnScroll
-            animateIn='animate__fadeInLeft'
-            animateOnce={true}
-            delay={300}
-          >
-            <div className='flex h-full w-full flex-row items-center justify-center gap-7 rounded-md bg-white p-10 px-14 shadow-lg shadow-blue-300'>
-              {/* <div style={{ background: "conic-gradient(#2563EB 270deg, #ffffff 0deg)" }} className="  rounded-full relative flex items-center justify-center before:absolute before:bg-white before:w-4/5 before:h-4/5 before:rounded-full"></div> */}
-              <img className='w-24' src='../src/assets/Laravel.svg' alt='' />
-              <div className='space-y-1'>
-                <h1 className='text-2xl font-medium leading-none sm:text-3xl'>
-                  Laravel
-                </h1>
-                <h1 className='space-y-1.5 text-sm font-medium text-slate-400'>
-                  <p>Experience</p>
-                  <div className='flex gap-1.5'>
-                    <div className='h-2.5 w-2.5 rounded-full bg-blue-500'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-slate-300'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-slate-300'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-slate-300'></div>
-                    <div className='h-2.5 w-2.5 rounded-full bg-slate-300'></div>
-                  </div>
-                </h1>
-              </div>
-            </div>
-          </AnimationOnScroll>
+        <div className='grid grid-flow-row grid-cols-1 gap-6 md:grid-cols-2 md:grid-rows-2 xl:grid-cols-3 xl:grid-rows-2'>
+          <Skill
+            techName='Html 5'
+            techImage='../src/assets/html.svg'
+            expPoint={5}
+            showUpDelay={700}
+          />
+          <Skill
+            techName='Css 3'
+            techImage='../src/assets/Css.svg'
+            expPoint={5}
+            showUpDelay={600}
+          />
+          <Skill
+            techName='JS ES6'
+            techImage='../src/assets/JavaScript.svg'
+            expPoint={4}
+            showUpDelay={500}
+          />
+          <Skill
+            techName='Php'
+            techImage='../src/assets/php.svg'
+            expPoint={3}
+            showUpDelay={400}
+          />
+          <Skill
+            techName='Tailwind Css'
+            techImage='../src/assets/tailwindCss.svg'
+            expPoint={5}
+            showUpDelay={300}
+          />
+          <Skill
+            techName='React JS'
+            techImage='../src/assets/react.svg'
+            expPoint={3}
+            showUpDelay={200}
+          />
+          <Skill
+            techName='Laravel'
+            techImage='../src/assets/Laravel.svg'
+            expPoint={2}
+            showUpDelay={100}
+          />
         </div>
       </div>
 
@@ -251,109 +203,47 @@ function Homepage() {
           <h1 className='mb-12 text-4xl font-bold text-blue-600'>
             My Latest work
           </h1>
-          <div className='grid grid-flow-row grid-cols-1 gap-2 overflow-hidden sm:grid-cols-3 sm:grid-rows-2'>
-            <div className='group group relative h-full w-full overflow-hidden rounded-md from-slate-800 to-transparent after:absolute after:bottom-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t sm:col-span-2'>
-              <img
-                className='h-56 w-full object-cover '
-                src='./img/1.png'
-                alt=''
-              />
-              <div className='absolute bottom-0 z-10 space-y-2 p-5'>
-                <h1 className='text-2xl text-white transition-all ease-in-out group-hover:text-3xl'>
-                  Login page
-                </h1>
-                <div className='space-x-2'>
-                  <span className='rounded-xl bg-sky-500 px-3 py-1 text-[12px] text-white'>
-                    React
-                  </span>
-                  <span className='rounded-xl bg-teal-500 px-3 py-1 text-[12px] text-white'>
-                    Tailwind
-                  </span>
-                </div>
-              </div>
-            </div>
+          <div className='grid grid-flow-row grid-cols-1 overflow-hidden sm:grid-cols-2 md:grid-cols-3'>
+          <Project
+              name='Maktabati online library'
+              image='./portfolio/1.png'
+              technologies={["React", "Css"]}
+            />
+            <Project
+              name='Bab Dari home rental'
+              image='./portfolio/2.png'
+              technologies={["Html", "JS", "Tailwind"]}
+            />
+            <Project
+              name='Blockchain'
+              image='./portfolio/3.png'
+              technologies={["Html", "Css", "JS"]}
+            />
+            <Project
+              name='Megarama'
+              image='./portfolio/4.png'
+              technologies={["Html", "Css", "JS"]}
+            />
+            <Project
+              name='Authentication'
+              image='./portfolio/5.png'
+              technologies={["React", "Tailwind"]}
+            />
 
-            <div className='group relative h-full w-full overflow-hidden rounded-md from-slate-800 to-transparent after:absolute after:bottom-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t'>
-              <img
-                className='h-56 w-full object-cover '
-                src='./img/1.png'
-                alt=''
-              />
-              <div className='absolute bottom-0 z-10 space-y-2 p-5'>
-                <h1 className='text-2xl text-white transition-all ease-in-out group-hover:text-3xl'>
-                  Login page
-                </h1>
-                <div className='space-x-2'>
-                  <span className='rounded-xl bg-orange-500 px-3 py-1 text-[12px] text-white'>
-                    Html
-                  </span>
-                  <span className='rounded-xl bg-blue-500 px-3 py-1 text-[12px] text-white'>
-                    Css
-                  </span>
-                  <span className='rounded-xl bg-blue-500 px-3 py-1 text-[12px] text-white'>
-                    + 1
-                  </span>
+            <Link to='/Portfolio'>
+              <div className='group relative h-full w-full cursor-pointer overflow-hidden after:absolute after:bottom-0 after:left-0 after:h-full after:w-full after:bg-black after:opacity-70'>
+                <div>
+                  <img
+                    className='absolute top-0 h-full w-full object-cover'
+                    src='./portfolio/6.png'
+                    alt=''
+                  />
                 </div>
-              </div>
-            </div>
-
-            <div className='group relative h-full w-full overflow-hidden rounded-md from-slate-800 to-transparent after:absolute after:bottom-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t'>
-              <img
-                className='h-56 w-full object-cover '
-                src='./img/1.png'
-                alt=''
-              />
-              <div className='absolute bottom-0 z-10 space-y-2 p-5'>
-                <h1 className='text-2xl text-white transition-all ease-in-out group-hover:text-3xl'>
-                  Login page
-                </h1>
-                <div className='space-x-2'>
-                  <span className='rounded-xl bg-orange-500 px-3 py-1 text-[12px] text-white'>
-                    Html
-                  </span>
-                  <span className='rounded-xl bg-blue-500 px-3 py-1 text-[12px] text-white'>
-                    Css
-                  </span>
-                  <span className='rounded-xl bg-blue-500 px-3 py-1 text-[12px] text-white'>
-                    + 2
-                  </span>
+                <div className='absolute bottom-1/2 left-1/2 z-10 origin-center -translate-x-1/2 translate-y-1/2 space-y-2'>
+                  <h1 className='text-xl text-white transition-all duration-300 ease-in-out group-hover:text-2xl'>
+                    See More
+                  </h1>
                 </div>
-              </div>
-            </div>
-
-            <div className='group relative h-full w-full overflow-hidden rounded-md from-slate-800 to-transparent after:absolute after:bottom-0 after:left-0 after:h-full after:w-full after:bg-gradient-to-t'>
-              <img
-                className='h-56 w-full object-cover '
-                src='./img/1.png'
-                alt=''
-              />
-              <div className='absolute bottom-0 z-10 space-y-2 p-5'>
-                <h1 className='text-2xl text-white transition-all ease-in-out group-hover:text-3xl'>
-                  Login page
-                </h1>
-                <div className='space-x-2'>
-                  <span className='rounded-xl bg-sky-500 px-3 py-1 text-[12px] text-white'>
-                    React
-                  </span>
-                  <span className='rounded-xl bg-blue-500 px-3 py-1 text-[12px] text-white'>
-                    Css
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <Link to="/Portfolio">
-              <div className='group relative h-full w-full cursor-pointer overflow-hidden rounded-md after:absolute after:bottom-0 after:left-0 after:h-full after:w-full after:bg-black after:opacity-70'>
-                <img
-                  className='h-56 w-full object-cover blur'
-                  src='./img/1.png'
-                  alt=''
-                />
-                  <div className='absolute bottom-1/2 left-1/2 z-10 origin-center -translate-x-1/2 translate-y-1/2 space-y-2'>
-                    <h1 className='text-2xl text-white transition-all ease-in-out group-hover:text-3xl'>
-                      See More
-                    </h1>
-                  </div>
               </div>
             </Link>
           </div>
