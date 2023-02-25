@@ -8,30 +8,34 @@ export default function Contact() {
       <p className='mb-12 text-center'>
         Connect with Me, I'd Love to Hear From You 
       </p>
-      <form name="Contact" data-netlify="true" className='flex flex-col gap-3'>
+      <form name="Contact" method='POST' data-netlify="true" className='flex flex-col gap-3'>
         <input
           type='text'
-          placeholder='Name'
+          placeholder='Full name'
+          name='full-name'
           className='rounded-lg px-5 py-3 outline-2 outline-offset-0 focus:outline focus:outline-blue-600'
         />
         <input
           type='text'
           placeholder='Email'
+          name='email'
           className='rounded-lg px-5 py-3 outline-2 outline-offset-0 focus:outline focus:outline-blue-600'
         />
         <input
           type='text'
           placeholder='Subject'
+          name='subject'
           className='rounded-lg px-5 py-3 outline-2 outline-offset-0 focus:outline focus:outline-blue-600'
         />
         <textarea
-          placeholder='Message'
+          placeholder='Tell me about your idea...'
           rows='5'
+          name='message'
           className='resize-none rounded-lg px-5 py-3 outline-2 outline-offset-0 focus:outline focus:outline-blue-600'
         ></textarea>
         <input
           type='submit'
-          value='submit'
+          value="Let's Connect!"
           className='cursor-pointer rounded-lg bg-blue-600 py-3 text-white hover:bg-blue-700 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-600 active:bg-blue-800'
         />
       </form>
