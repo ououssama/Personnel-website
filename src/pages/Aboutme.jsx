@@ -1,13 +1,13 @@
 import React from "react";
 function AboutMe() {
   return (
-    <div className='box-border flex flex-col items-center gap-12 px-8 lg:px-60'>
+    <div className='box-border flex flex-col gap-12 px-8 lg:px-28'>
       <h1 className='text-6xl font-semibold text-blue-600 sm:text-7xl'>
         A Little Bit About Me
       </h1>
-      <img className='w-4/5' src='./src/assets/img/Success.jpg' alt='' />
+      {/* <img className='w-4/5' src='./src/assets/img/Success.jpg' alt='' /> */}
       <p className='w-fit indent-3 text-xl'>
-        Hello, I am Oussama, a full-stack developer in the process of learning
+        Hello, I am Oussama, a <b className="text-blue-600 ">full-stack developer</b> in the process of learning
         and perfecting my skills. I am currently in my second year of my
         training and have gained knowledge in various programming languages such
         as HTML, CSS, JavaScript, PHP, and Python. I am familiar with different

@@ -1,13 +1,12 @@
 import React from 'react'
 export default function Contact() {
   return (
-    <div id='contact' className='h-auto px-8 sm:px-36 lg:px-60 xl:px-96'>
+    <div id='contact' className=' flex flex-col justify-center h-screen px-8 sm:px-36 lg:px-60 xl:px-96'>
       <h1 className='mb-7 text-center text-5xl font-bold text-blue-600'>
         Let's work together
       </h1>
       <p className='mb-12 text-center'>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi velit
-        harum debitis.
+        Connect with Me, I'd Love to Hear From You 
       </p>
       <form className='flex flex-col gap-3'>
         <input

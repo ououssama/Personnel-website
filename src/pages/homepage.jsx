@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { AnimationOnScroll } from "react-animation-on-scroll";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Contact from "./Contact";
 
 // component that display project for the portfolio
@@ -29,7 +29,6 @@ export function Project({ name, image, technologies }) {
 
 function Skill({ techImage, techName, expPoint, showUpDelay }) {
   const [exp, setExp] = useState([]);
-
   // Definr experiense level
   useEffect(() => {
     for (let i = 0; i < 5; i++) {
@@ -70,6 +69,8 @@ function Skill({ techImage, techName, expPoint, showUpDelay }) {
 }
 
 function Homepage() {
+  const path = useLocation()
+  
   return (
     <>
       <div className='-mt-12 flex flex-col items-center justify-around gap-y-12 gap-x-16 px-16 md:mt-0 md:flex-row lg:px-36'>
@@ -80,32 +81,34 @@ function Homepage() {
             developer
           </h1>
           <div className='flex flex-col gap-5 xl:flex-row'>
-            <Link to='/Contact'>
-              <button className='group w-full rounded-md bg-blue-600 px-10 py-4 text-white shadow-blue-900 drop-shadow-2xl xl:w-fit '>
-                let's work together{" "}
+            <a href="#contact">
+              <button className='group flex items-center justify-center w-full rounded-md bg-blue-600 px-10 py-4 text-white shadow-blue-900 drop-shadow-2xl xl:w-fit '>
+                <p>let's work together</p>
                 <FontAwesomeIcon
-                  className='translate-x-3 animate-slideLeft opacity-0 transition-all ease-in-out md:group-hover:opacity-100'
+                  className='translate-x-3 -ml-4 animate-slideLeft transition-all opacity-0 ease-in-out md:group-hover:opacity-100 md:group-hover:ml-0'
                   icon={faArrowRight}
                 />
               </button>
-            </Link>
+            </a>
             <Link to='/AboutMe'>
-              <button className='group w-full rounded-md border-2 border-blue-600 px-10 py-4 text-blue-600 xl:w-fit  '>
-                Know more about me{" "}
+              <button className='group flex justify-center items-center w-full rounded-md border-2 border-blue-600 px-10 py-4 text-blue-600 xl:w-fit'>
+                Learn more about me
                 <FontAwesomeIcon
-                  className='translate-x-3 animate-slideLeft opacity-0 transition-all ease-in-out md:group-hover:opacity-100'
+                  className='translate-x-3 -ml-4 animate-slideLeft opacity-0 transition-all ease-in-out md:group-hover:opacity-100 md:group-hover:ml-0'
                   icon={faArrowRight}
                 />
               </button>
             </Link>
           </div>
         </div>
-          <div className="w-96"><img className="bg-slate-200 object-cover rounded-full bg-top" src="/profile.png" alt="profile" /></div>
-        {/* <div className="flex items-center">
-                    <div className="inline-block border-blue-600 border-b-[1.2em] border-l-[1.2em]  w-20 h-20 rotate-45"></div>
-                    <div className="inline-block bg-blue-600 w-6 h-36 -skew-x-12"></div>
-                    <div className="inline-block border-blue-600 border-b-[1.2em] border-r-[1.2em]  w-20 h-20 -rotate-45"></div>
-                </div> */}
+
+
+          <img
+            className='w-full rounded-full bg-slate-200 bg-top object-cover max-w-xs'
+            src='/profile.png'
+            alt='profile'
+          />
+
       </div>
 
       <div className='relative top-12 h-max space-y-8 bg-white py-12 px-8 pb-24 after:absolute after:left-0 after:-top-12 after:-z-10 after:h-52 after:w-full after:-skew-y-3 after:bg-white lg:px-40'>
@@ -119,10 +122,8 @@ function Homepage() {
               </p>
             </div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis
-              harum maiores saepe corrupti iusto quaerat eius excepturi autem
-              fugit? Dicta perferendis maiores quasi repudiandae saepe eligendi
-              qui adipisci accusantium autem.
+              Hello, I am Oussama, a full-stack developer in the process of learning and perfecting my skills.
+              I am confident that my skills and drive will enable me to succeed in any task that I take on
             </p>
           </div>
           <div className='flex flex-col items-center justify-around gap-y-12 pt-5 sm:flex-row sm:items-start sm:gap-y-0'>
@@ -155,56 +156,56 @@ function Homepage() {
         <div className='grid grid-flow-row grid-cols-1 gap-6 md:grid-cols-2 md:grid-rows-2 xl:grid-cols-3 xl:grid-rows-2'>
           <Skill
             techName='Html 5'
-            techImage='../src/assets/html.svg'
+            techImage='/image/html.svg'
             expPoint={5}
             showUpDelay={700}
           />
           <Skill
             techName='Css 3'
-            techImage='../src/assets/Css.svg'
+            techImage='/image/Css.svg'
             expPoint={5}
             showUpDelay={600}
           />
           <Skill
             techName='JS ES6'
-            techImage='../src/assets/JavaScript.svg'
+            techImage='/image/JavaScript.svg'
             expPoint={4}
             showUpDelay={500}
           />
           <Skill
             techName='Php'
-            techImage='../src/assets/php.svg'
+            techImage='/image/php.svg'
             expPoint={3}
             showUpDelay={400}
           />
           <Skill
             techName='Tailwind Css'
-            techImage='../src/assets/tailwindCss.svg'
+            techImage='/image/tailwindCss.svg'
             expPoint={5}
             showUpDelay={300}
           />
           <Skill
             techName='React JS'
-            techImage='../src/assets/react.svg'
+            techImage='/image/react.svg'
             expPoint={3}
             showUpDelay={200}
           />
           <Skill
             techName='Laravel'
-            techImage='../src/assets/Laravel.svg'
+            techImage='/image/Laravel.svg'
             expPoint={2}
             showUpDelay={100}
           />
         </div>
       </div>
 
-      <div className='h-auto bg-white px-8 pt-12 pb-24 lg:px-40'>
+      <div className='h-full bg-white px-8 pt-12 pb-24 lg:px-40'>
         <AnimationOnScroll animateIn='animate__fadeInRight' animateOnce={true}>
           <h1 className='mb-12 text-4xl font-bold text-blue-600'>
             My Latest work
           </h1>
           <div className='grid grid-flow-row grid-cols-1 overflow-hidden sm:grid-cols-2 md:grid-cols-3'>
-          <Project
+            <Project
               name='Maktabati online library'
               image='./portfolio/1.png'
               technologies={["React", "Css"]}
@@ -232,13 +233,11 @@ function Homepage() {
 
             <Link to='/Portfolio'>
               <div className='group relative h-full w-full cursor-pointer overflow-hidden after:absolute after:bottom-0 after:left-0 after:h-full after:w-full after:bg-black after:opacity-70'>
-                <div>
                   <img
-                    className='absolute top-0 h-full w-full object-cover'
+                    className='h-full w-full object-cover'
                     src='./portfolio/6.png'
-                    alt=''
+                    alt='portfolio'
                   />
-                </div>
                 <div className='absolute bottom-1/2 left-1/2 z-10 origin-center -translate-x-1/2 translate-y-1/2 space-y-2'>
                   <h1 className='text-xl text-white transition-all duration-300 ease-in-out group-hover:text-2xl'>
                     See More
