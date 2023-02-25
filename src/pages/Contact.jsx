@@ -8,7 +8,7 @@ export default function Contact() {
       <p className='mb-12 text-center'>
         Connect with Me, I'd Love to Hear From You 
       </p>
-      <form className='flex flex-col gap-3'>
+      <form name="Contact" data-netlify="true" className='flex flex-col gap-3'>
         <input
           type='text'
           placeholder='Name'
