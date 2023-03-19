@@ -69,11 +69,11 @@ function Skill({ techImage, techName, expPoint, showUpDelay }) {
 }
 
 function Homepage() {
-  const path = useLocation()
-  
+  const path = useLocation();
+
   return (
     <>
-      <div className='-mt-12 flex flex-col items-center justify-around gap-y-12 gap-x-16 px-16 md:mt-0 md:flex-row lg:px-36'>
+      <div className='-mt-12 flex flex-col items-center justify-around gap-y-12 gap-x-16 px-8 md:mt-0 md:flex-row lg:px-36'>
         <div className='flex-1 space-y-8'>
           <h1 className='text-5xl font-medium lg:text-6xl'>
             Hi, I'm Oussama A{" "}
@@ -81,20 +81,20 @@ function Homepage() {
             developer
           </h1>
           <div className='flex flex-col gap-5 xl:flex-row'>
-            <a href="#contact">
-              <button className='group flex items-center justify-center w-full rounded-md bg-blue-600 px-10 py-4 text-white shadow-blue-900 drop-shadow-2xl xl:w-fit '>
+            <a href='#contact'>
+              <button className='group flex w-full items-center justify-center rounded-md bg-blue-600 px-10 py-4 text-white shadow-blue-900 drop-shadow-2xl xl:w-fit '>
                 <p>let's work together</p>
                 <FontAwesomeIcon
-                  className='translate-x-3 -ml-4 animate-slideLeft transition-all opacity-0 ease-in-out md:group-hover:opacity-100 md:group-hover:ml-0'
+                  className='-ml-4 translate-x-3 animate-slideLeft opacity-0 transition-all ease-in-out md:group-hover:ml-0 md:group-hover:opacity-100'
                   icon={faArrowRight}
                 />
               </button>
             </a>
             <Link to='/AboutMe'>
-              <button className='group flex justify-center items-center w-full rounded-md border-2 border-blue-600 px-10 py-4 text-blue-600 xl:w-fit'>
+              <button className='group flex w-full items-center justify-center rounded-md border-2 border-blue-600 px-10 py-4 text-blue-600 xl:w-fit'>
                 Learn more about me
                 <FontAwesomeIcon
-                  className='translate-x-3 -ml-4 animate-slideLeft opacity-0 transition-all ease-in-out md:group-hover:opacity-100 md:group-hover:ml-0'
+                  className='-ml-4 translate-x-3 animate-slideLeft opacity-0 transition-all ease-in-out md:group-hover:ml-0 md:group-hover:opacity-100'
                   icon={faArrowRight}
                 />
               </button>
@@ -102,13 +102,11 @@ function Homepage() {
           </div>
         </div>
 
-
-          <img
-            className='w-full rounded-full bg-slate-200 bg-top object-cover max-w-xs'
-            src='/profile.png'
-            alt='profile'
-          />
-
+        <img
+          className='w-full max-w-xs rounded-full bg-slate-200 bg-top object-cover'
+          src='/profile.png'
+          alt='profile'
+        />
       </div>
 
       <div className='relative top-12 h-max space-y-8 bg-white py-12 px-8 pb-24 after:absolute after:left-0 after:-top-12 after:-z-10 after:h-52 after:w-full after:-skew-y-3 after:bg-white lg:px-40'>
@@ -122,11 +120,12 @@ function Homepage() {
               </p>
             </div>
             <p>
-              Hello, I am Oussama, a full-stack developer in the process of learning and perfecting my skills.
-              I am confident that my skills and drive will enable me to succeed in any task that I take on
+              Hello, I am Oussama, a full-stack developer in the process of
+              learning and perfecting my skills. I am confident that my skills
+              and drive will enable me to succeed in any task that I take on
             </p>
           </div>
-          <div className='flex flex-col items-center justify-around gap-y-12 pt-5 sm:flex-row sm:items-start sm:gap-y-0'>
+          <div className='grid w-full max-w-lg place-items-center gap-y-12 pt-12 grid-cols-2 sm:grid-cols-2 sm:flex-row sm:items-start md:grid-cols-3'>
             <span className='text-6xl'>
               <span className='font-medium text-blue-600'>2+</span>
               <p className='text-lg'>
@@ -233,11 +232,11 @@ function Homepage() {
 
             <Link to='/Portfolio'>
               <div className='group relative h-full w-full cursor-pointer overflow-hidden after:absolute after:bottom-0 after:left-0 after:h-full after:w-full after:bg-black after:opacity-70'>
-                  <img
-                    className='h-full w-full object-cover'
-                    src='./portfolio/6.png'
-                    alt='portfolio'
-                  />
+                <img
+                  className='h-full w-full object-cover'
+                  src='./portfolio/6.png'
+                  alt='portfolio'
+                />
                 <div className='absolute bottom-1/2 left-1/2 z-10 origin-center -translate-x-1/2 translate-y-1/2 space-y-2'>
                   <h1 className='text-xl text-white transition-all duration-300 ease-in-out group-hover:text-2xl'>
                     See More

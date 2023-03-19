@@ -171,7 +171,7 @@ function Layout() {
         </div>
       )}
       <Outlet />
-      <footer className=' flex h-full w-full flex-col items-center justify-end gap-12 bg-white pt-12'>
+      <footer className='flex h-full w-full flex-col items-center justify-end gap-12 bg-white pt-12'>
         <div>
           <ol className='hidden items-center gap-2 sm:flex'>
             <li className='rounded-md px-5 py-2 hover:bg-blue-600 hover:text-white'>
@@ -202,8 +202,8 @@ function Layout() {
             </li>
           </ol>
 
-          <ol className='grid place-items-center items-center gap-2 sm:hidden'>
-            <a href='#hero'>
+          <ol className='grid grid-cols-2 place-items-center items-center gap-2 sm:hidden'>
+            <a href='#hero' className="col-span-full">
               <img className='mb-3 w-10' src='/logo.svg' alt='logo' />
             </a>
             <Link to='/' className='text-lg'>
@@ -271,7 +271,7 @@ function Layout() {
               <span>oussama ouaissa</span>
             </a>
             <a
-              className='cursor-pointer space-x-3 rounded-md border-2 py-2 px-6 hover:bg-[#ea4c89] hover:text-white'
+              className='cursor-pointer space-x-3 rounded-md border-2 py-2 px-6 hover:bg-[#ea4c89] hover:text-white md:col-start-2 lg:col-auto'
               href='https://dribbble.com/ouaissa02'
               target='_blank'
               rel='noopener noreferrer'
